@@ -54,7 +54,7 @@ Display download count for a particular release tag:
 
     $ github-download-count adobe brackets release-1.6
 
-    Brackets.Release.1.6.32-bit.deb: 9926
-    Brackets.Release.1.6.64-bit.deb: 31592
-    Brackets.Release.1.6.dmg: 54471
-    Brackets.Release.1.6.msi: 150754
+    9933	Brackets.Release.1.6.32-bit.deb
+    31609	Brackets.Release.1.6.64-bit.deb
+    54493	Brackets.Release.1.6.dmg
+    150819	Brackets.Release.1.6.msi
