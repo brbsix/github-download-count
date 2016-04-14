@@ -17,8 +17,8 @@ Usage
     optional arguments:
       -s, --summarize  display only a total download count
 
-Example
---------
+Examples
+---------
 
 Request a [personal access token](https://github.com/settings/tokens) and use it as follows:
 
