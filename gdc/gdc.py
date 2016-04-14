@@ -38,7 +38,7 @@ class Github(object):
 
     @staticmethod
     def _print(releases, summarize=False):
-        """Print download count of releases."""
+        """Print download counts of releases."""
         if summarize:
             print(sum(i[1] for i in releases))
         else:
@@ -51,7 +51,7 @@ class Github(object):
 
     @staticmethod
     def _print_all(all_releases, summarize=False):
-        """Print download count of all releases."""
+        """Print download counts of all releases."""
         if summarize:
             data = []
             for repo, releases in all_releases:
