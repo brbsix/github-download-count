@@ -69,7 +69,7 @@ class Github(object):
             except ValueError:
                 sys.exit(0)
             for repo, releases in all_releases:
-                print(Terminal.BOLD + repo + Terminal.END)
+                print(bold(repo))
                 for name, download_count in releases:
                     print(str(download_count).ljust(column_width), name)
                 print()
@@ -117,13 +117,6 @@ class Github(object):
         return self._request('/user')['login']
 
 
-# pylint: disable=too-few-public-methods
-class Terminal(object):
-    """Adjust and colorize terminal text."""
-    BOLD = '\033[1m'
-    END = '\033[0m'
-
-
 def _parser(args):
     """Parse command-line options."""
 
@@ -163,6 +156,11 @@ def _parser(args):
         version='%(prog)s ' + __version__)
 
     return parser.parse_args(args)
+
+
+def bold(text):
+    """Return emboldened text."""
+    return '\033[1m' + text + '\033[0m'
 
 
 def main(args=None):
