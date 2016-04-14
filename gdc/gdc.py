@@ -18,7 +18,6 @@ from . import __program__, __version__
 
 
 class Github(object):
-
     """Interact with GitHub's API."""
 
     def __init__(self, user, repo=None, tag=None, summarize=False):
