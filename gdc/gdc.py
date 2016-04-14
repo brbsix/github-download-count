@@ -25,7 +25,7 @@ class Github(object):
 
         self.headers = {
             'Authorization': 'token %s' % os.environ['GITHUB_TOKEN']
-        } if 'GITHUB_TOKEN' in os.environ else {}
+        } if os.environ.get('GITHUB_TOKEN') else {}
 
         if tag:
             self._print(self.get_releases_by_tag(user, repo, tag), summarize)
