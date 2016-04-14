@@ -20,7 +20,7 @@ from . import __program__, __version__
 class Github(object):
     """Interact with GitHub's API."""
 
-    def __init__(self, user, repo=None, tag=None, summarize=False):
+    def __init__(self, user=None, repo=None, tag=None, summarize=False):
         logging.basicConfig(format='%(levelname)s: %(message)s')
 
         self.headers = {
@@ -32,7 +32,9 @@ class Github(object):
         elif repo:
             self._print(self.get_releases_by_repo(user, repo), summarize)
         else:
-            self._print_all(self.get_releases_by_user(user), summarize)
+            self._print_all(
+                self.get_releases_by_user(user if user else self.get_user()),
+                summarize)
 
     @staticmethod
     def _print(releases, summarize=False):
@@ -94,6 +96,10 @@ class Github(object):
                 all_releases.append((repo, releases))
         return all_releases
 
+    def get_user(self):
+        """Return the currently authenticated user."""
+        return self._request('/user')['login']
+
 
 # pylint: disable=too-few-public-methods
 class Terminal(object):
@@ -112,7 +118,8 @@ def _parser(args):
     parser.add_argument(
         'user',
         help='GitHub username',
-        metavar='USER')
+        metavar='USER',
+        nargs='?')
     parser.add_argument(
         'repo',
         help='GitHub repository',
