@@ -51,7 +51,7 @@ class Github(object):
                 print('{:^8} {}'.format(sum(i[1] for i in releases), repo))
         else:
             for repo, releases in all_releases:
-                print(repo)
+                print(Terminal.BOLD + repo + Terminal.END)
                 for name, download_count in releases:
                     print('{:^8} {}'.format(download_count, name))
                 print()
@@ -107,6 +107,13 @@ class Github(object):
             if releases:
                 all_releases.append((repo, releases))
         return all_releases
+
+
+# pylint: disable=too-few-public-methods
+class Terminal(object):
+    """Adjust and colorize terminal text."""
+    BOLD = '\033[1m'
+    END = '\033[0m'
 
 
 def _parser(args):
