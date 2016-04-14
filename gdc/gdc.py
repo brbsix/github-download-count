@@ -42,19 +42,19 @@ class Github(object):
             print(sum(i[1] for i in releases))
         else:
             for name, download_count in releases:
-                print('%d\t%s' % (download_count, name))
+                print('{:^8} {}'.format(download_count, name))
 
     @staticmethod
     def _print_all(all_releases, summarize=False):
         """Print download count of all releases."""
         if summarize:
             for repo, releases in all_releases:
-                print('%d\t%s' % (sum(i[1] for i in releases), repo))
+                print('{:^8} {}'.format(sum(i[1] for i in releases), repo))
         else:
             for repo, releases in all_releases:
                 print(repo)
                 for name, download_count in releases:
-                    print('%d\t%s' % (download_count, name))
+                    print('{:^8} {}'.format(download_count, name))
                 print()
 
     def _request(self, url):
