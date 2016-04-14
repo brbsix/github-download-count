@@ -58,31 +58,24 @@ class Github(object):
 
     def _request(self, url):
         """Perform a GitHub API call and return the JSON response."""
-        return requests.get('https://api.github.com' + url,
-                            headers=self.headers).json()
+        response = requests.get('https://api.github.com' + url,
+                                headers=self.headers).json()
+
+        try:
+            # message key is indicative of a malformed request
+            LOG.error(response['message'])
+            sys.exit(1)
+        except (KeyError, TypeError):
+            return response
 
     def get_repos_by_user(self, user):
         """Return repositories for particular user."""
         response = self._request('/users/%s/repos' % user)
-
-        try:
-            LOG.error(response['message'])
-            sys.exit(1)
-        except TypeError:
-            pass
-
         return (r['full_name'].split('/')[1] for r in response)
 
     def get_releases_by_repo(self, user, repo):
         """Return releases for particular repo."""
         response = self._request('/repos/%s/%s/releases' % (user, repo))
-
-        try:
-            LOG.error(response['message'])
-            sys.exit(1)
-        except TypeError:
-            pass
-
         return ((a['name'], a['download_count']) for p in response
                 for a in p['assets'])
 
@@ -90,13 +83,6 @@ class Github(object):
         """Return releases for a particular repo tag."""
         response = self._request('/repos/%s/%s/releases/tags/%s' %
                                  (user, repo, tag))
-
-        try:
-            LOG.error(response['message'])
-            sys.exit(1)
-        except KeyError:
-            pass
-
         return ((a['name'], a['download_count']) for a in response['assets'])
 
     def get_releases_by_user(self, user):
