@@ -25,36 +25,36 @@ Request a [personal access token](https://github.com/settings/tokens) (NOTE: no 
     $ GITHUB_TOKEN=3389dd5d468cd41f8812402d494089f4d1c934a7 github-download-count google
 
     access-bridge-explorer
-       12    AccessBridgeExplorer-0.9.3.zip
-       1     AccessBridgeExplorer-0.9.2.zip
-       2     AccessBridgeExplorer-0.9.1.zip
-       3     AccessBridgeExplorer-0.9.0.zip
+    12     AccessBridgeExplorer-0.9.3.zip
+    1      AccessBridgeExplorer-0.9.2.zip
+    2      AccessBridgeExplorer-0.9.1.zip
+    3      AccessBridgeExplorer-0.9.0.zip
 
     allocation-instrumenter
-       10    java-allocation-instrumenter-3.0-javadoc.jar
-       7     java-allocation-instrumenter-3.0-sources.jar
-       93    java-allocation-instrumenter-3.0.jar
+    10     java-allocation-instrumenter-3.0-javadoc.jar
+    7      java-allocation-instrumenter-3.0-sources.jar
+    93     java-allocation-instrumenter-3.0.jar
 
     android-classyshark
-      296    ClassyShark.jar
-      2423   ClassyShark.jar
-      1255   ClassyShark.jar
-      636    ClassyShark.jar
-      199    classyshark.apk
+    348    ClassyShark.jar
+    2423   ClassyShark.jar
+    1255   ClassyShark.jar
+    636    ClassyShark.jar
+    199    classyshark.apk
 
 Display total download counts:
 
     $ github-download-count google -s
 
-       18    access-bridge-explorer
-      110    allocation-instrumenter
-      4812   android-classyshark
+    18     access-bridge-explorer
+    110    allocation-instrumenter
+    4861   android-classyshark
 
 Display download count for a particular release tag:
 
     $ github-download-count adobe brackets release-1.6
 
-      9934   Brackets.Release.1.6.32-bit.deb
-     31615   Brackets.Release.1.6.64-bit.deb
-     54496   Brackets.Release.1.6.dmg
-     150877  Brackets.Release.1.6.msi
+    9937     Brackets.Release.1.6.32-bit.deb
+    31634    Brackets.Release.1.6.64-bit.deb
+    54512    Brackets.Release.1.6.dmg
+    150987   Brackets.Release.1.6.msi

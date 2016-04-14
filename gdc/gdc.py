@@ -42,20 +42,36 @@ class Github(object):
         if summarize:
             print(sum(i[1] for i in releases))
         else:
+            try:
+                column_width = max(len(str(d)) for n, d in releases) + 2
+            except ValueError:
+                sys.exit(0)
             for name, download_count in releases:
-                print('{:^8} {}'.format(download_count, name))
+                print(str(download_count).ljust(column_width), name)
 
     @staticmethod
     def _print_all(all_releases, summarize=False):
         """Print download count of all releases."""
         if summarize:
+            data = []
             for repo, releases in all_releases:
-                print('{:^8} {}'.format(sum(i[1] for i in releases), repo))
+                data.append((repo, sum(r[1] for r in releases)))
+            try:
+                column_width = max(len(str(d[1])) for d in data) + 2
+            except ValueError:
+                sys.exit(0)
+            for repo, total in data:
+                print(str(total).ljust(column_width), repo)
         else:
+            try:
+                column_width = max(
+                    len(str(d)) for o, r in all_releases for n, d in r) + 2
+            except ValueError:
+                sys.exit(0)
             for repo, releases in all_releases:
                 print(Terminal.BOLD + repo + Terminal.END)
                 for name, download_count in releases:
-                    print('{:^8} {}'.format(download_count, name))
+                    print(str(download_count).ljust(column_width), name)
                 print()
 
     def _request(self, url):
@@ -78,14 +94,14 @@ class Github(object):
     def get_releases_by_repo(self, user, repo):
         """Return releases for particular repo."""
         response = self._request('/repos/%s/%s/releases' % (user, repo))
-        return ((a['name'], a['download_count']) for p in response
-                for a in p['assets'])
+        return [(a['name'], a['download_count']) for p in response
+                for a in p['assets']]
 
     def get_releases_by_tag(self, user, repo, tag):
         """Return releases for a particular repo tag."""
         response = self._request('/repos/%s/%s/releases/tags/%s' %
                                  (user, repo, tag))
-        return ((a['name'], a['download_count']) for a in response['assets'])
+        return [(a['name'], a['download_count']) for a in response['assets']]
 
     def get_releases_by_user(self, user):
         """Return releases for a particular user."""
