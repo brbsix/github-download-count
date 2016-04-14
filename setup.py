@@ -27,6 +27,10 @@ def read(path):
 # allow setup.py to be run from any path
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
+SETUP_REQUIRES = ['pytest-runner']
+INSTALL_REQUIRES = ['requests']
+TEST_REQUIRE = ['pylint', 'pytest', 'pytest-pylint']
+
 setup(
     name=__program__,
     version=__version__,
@@ -38,7 +42,9 @@ setup(
     license='GPLv3',
     keywords=['GitHub', 'API', 'release', 'download', 'count'],
     packages=['gdc'],
-    install_requires=['requests'],
+    install_requires=INSTALL_REQUIRES,
+    setup_requires=SETUP_REQUIRES,
+    tests_require=TEST_REQUIRE,
     entry_points={
         'console_scripts': ['github-download-count=gdc.gdc:main'],
     },
