@@ -20,7 +20,7 @@ Usage
 Examples
 ---------
 
-Request a [personal access token](https://github.com/settings/tokens) and use it as follows:
+Request a [personal access token](https://github.com/settings/tokens) to store in your *.bashrc* or use as follows:
 
     $ GITHUB_TOKEN=3389dd5d468cd41f8812402d494089f4d1c934a7 github-download-count google
 
