@@ -89,7 +89,7 @@ class Github(object):
     def get_repos_by_user(self, user):
         """Return repositories for particular user."""
         response = self._request('/users/%s/repos' % user)
-        return (r['full_name'].split('/')[1] for r in response)
+        return (r['full_name'].split('/', 1)[1] for r in response)
 
     def get_releases_by_repo(self, user, repo):
         """Return releases for particular repo."""
