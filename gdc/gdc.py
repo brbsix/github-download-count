@@ -81,7 +81,7 @@ class Github(object):
 
         try:
             # message key is indicative of a malformed request
-            LOG.error(response['message'])
+            logging.error(response['message'])
             sys.exit(1)
         except (KeyError, TypeError):
             return response
@@ -169,7 +169,6 @@ def main(args=None):
     Github(options.user, options.repo, options.tag, options.summarize)
 
 
-LOG = logging.getLogger(__program__)
 
 if __name__ == '__main__':
     main()
