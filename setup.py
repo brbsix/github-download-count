@@ -29,7 +29,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 SETUP_REQUIRES = ['pytest-runner']
 INSTALL_REQUIRES = ['requests']
-TEST_REQUIRE = ['pylint', 'pytest', 'pytest-pylint']
+TEST_REQUIRE = ['pytest-pylint']
 
 setup(
     name=__program__,
