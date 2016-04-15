@@ -31,6 +31,12 @@ SETUP_REQUIRES = ['pytest-runner']
 INSTALL_REQUIRES = ['requests']
 TEST_REQUIRE = ['pytest-pylint', 'requests_mock']
 
+# install standalone mock if necessary (Python 2.7)
+try:
+    __import__('unittest.mock')
+except ImportError:
+    TEST_REQUIRE.append('mock')
+
 setup(
     name=__program__,
     version=__version__,

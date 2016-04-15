@@ -9,7 +9,10 @@ import hashlib
 import json
 import os
 from textwrap import dedent
-from unittest.mock import patch
+try:
+    from unittest.mock import patch
+except ImportError:
+    from mock import patch
 
 # external imports
 import pytest
