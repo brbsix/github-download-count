@@ -20,21 +20,17 @@ from . import __program__, __version__
 class Github(object):
     """Interact with GitHub's API."""
 
-    def __init__(self, user=None, repo=None, tag=None, summarize=False):
+    def __init__(self):
         logging.basicConfig(format='%(levelname)s: %(message)s')
 
         self.headers = {
             'Authorization': 'token %s' % os.environ['GITHUB_TOKEN']
         } if os.environ.get('GITHUB_TOKEN') else {}
 
-        if tag:
-            self._print(self.get_releases_by_tag(user, repo, tag), summarize)
-        elif repo:
-            self._print(self.get_releases_by_repo(user, repo), summarize)
-        else:
-            self._print_all(
-                self.get_releases_by_user(user if user else self.get_user()),
-                summarize)
+    def _get(self, url):
+        """Perform a GitHub API call and return the JSON response."""
+        return requests.get('https://api.github.com' + url,
+                            headers=self.headers).json()
 
     @staticmethod
     def _print(releases, summarize=False):
@@ -75,9 +71,8 @@ class Github(object):
                 print()
 
     def _request(self, url):
-        """Perform a GitHub API call and return the JSON response."""
-        response = requests.get('https://api.github.com' + url,
-                                headers=self.headers).json()
+        """Perform a GitHub API call and return the clean response."""
+        response = self._get(url)
 
         try:
             # message key is indicative of a malformed request
@@ -115,6 +110,17 @@ class Github(object):
     def get_user(self):
         """Return the currently authenticated user."""
         return self._request('/user')['login']
+
+    def show(self, user=None, repo=None, tag=None, summarize=False):
+        """Print download counts."""
+        user = user if user else self.get_user()
+
+        if tag:
+            self._print(self.get_releases_by_tag(user, repo, tag), summarize)
+        elif repo:
+            self._print(self.get_releases_by_repo(user, repo), summarize)
+        else:
+            self._print_all(self.get_releases_by_user(user), summarize)
 
 
 def _parser(args):
@@ -166,8 +172,8 @@ def bold(text):
 def main(args=None):
     """Start application."""
     options = _parser(args)
-    Github(options.user, options.repo, options.tag, options.summarize)
-
+    github = Github()
+    github.show(options.user, options.repo, options.tag, options.summarize)
 
 
 if __name__ == '__main__':
