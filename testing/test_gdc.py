@@ -6,6 +6,7 @@
 # standard imports
 import argparse
 import hashlib
+import io
 import json
 import os
 from textwrap import dedent
@@ -580,8 +581,9 @@ def test_bold_normal():
 
 def read(name):
     """Return contents of .txt file in the test's data directory."""
-    with open(os.path.join(os.path.dirname(__file__),
-                           'data', name + '.txt')) as fob:
+    # pass utf8 encoding flag for Python 2.7 support
+    with io.open(os.path.join(os.path.dirname(__file__),
+                              'data', name + '.txt'), encoding='utf8') as fob:
         return fob.read()
 
 
