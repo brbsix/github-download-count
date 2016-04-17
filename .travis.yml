@@ -11,6 +11,6 @@ install:
   - pip install keyrings.alt coveralls
   - pip install -e .[testing]  # install setup + test requirements
 
-script: coverage run setup.py test
+script: python -m pytest
 
 after_success: coveralls
