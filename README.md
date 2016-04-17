@@ -1,5 +1,6 @@
 # github-download-count
 
+[![Build Status](https://travis-ci.org/brbsix/github-download-count.svg?branch=master)](https://travis-ci.org/brbsix/github-download-count)
 [![Coverage Status](https://coveralls.io/repos/github/brbsix/github-download-count/badge.svg?branch=master)](https://coveralls.io/github/brbsix/github-download-count?branch=master)
 
 Display download counts of GitHub releases.
