@@ -29,13 +29,13 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 SETUP_REQUIRES = ['pytest-runner']
 INSTALL_REQUIRES = ['requests']
-TEST_REQUIRE = ['pytest-pylint', 'requests_mock']
+TESTS_REQUIRE = ['pytest-pylint', 'requests_mock']
 
 # install standalone mock if necessary (Python 2.7)
 try:
     __import__('unittest.mock')
 except ImportError:
-    TEST_REQUIRE.append('mock')
+    TESTS_REQUIRE.append('mock')
 
 setup(
     name=__program__,
@@ -50,7 +50,7 @@ setup(
     packages=['gdc'],
     install_requires=INSTALL_REQUIRES,
     setup_requires=SETUP_REQUIRES,
-    tests_require=TEST_REQUIRE,
+    tests_require=TESTS_REQUIRE,
     entry_points={
         'console_scripts': ['github-download-count=gdc.gdc:main'],
     },
