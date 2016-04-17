@@ -7,9 +7,6 @@ import os
 import socket
 import sys
 
-# external imports
-from pytest_pylint import PyLintItem
-
 
 def clean_arguments():
     """Prepare command-line args (necessary for tests involving argparse)."""
@@ -43,10 +40,19 @@ def disable_socket():
     socket.socket = guard
 
 
+def pylint_test(item):
+    """Determine whether current item is a pylint test."""
+    try:
+        from pytest_pylint import PyLintItem
+    except ImportError:
+        return False
+    return isinstance(item, PyLintItem)
+
+
 def pytest_runtest_setup(item):
     """Setup prior to each test."""
     # skip setup for pylint tests
-    if not isinstance(item, PyLintItem):
+    if not pylint_test(item):
         clean_arguments()
         clean_environment()
         clean_logger()
