@@ -51,6 +51,7 @@ setup(
     install_requires=INSTALL_REQUIRES,
     setup_requires=SETUP_REQUIRES,
     tests_require=TESTS_REQUIRE,
+    extras_require={'testing': TESTS_REQUIRE},
     entry_points={
         'console_scripts': ['github-download-count=gdc.gdc:main'],
     },
