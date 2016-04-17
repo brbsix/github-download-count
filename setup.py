@@ -29,7 +29,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 SETUP_REQUIRES = ['pytest-runner']
 INSTALL_REQUIRES = ['requests']
-TEST_REQUIRE = ['pytest-pylint', 'requests_mock']
+TEST_REQUIRE = ['pytest-cov', 'pytest-pylint', 'requests_mock']
 
 # install standalone mock if necessary (Python 2.7)
 try:
