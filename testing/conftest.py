@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """pytest setup and teardown configuration."""
 
+# Python 2 forwards-compatibility
 from __future__ import absolute_import
 
 # standard imports
@@ -9,6 +10,7 @@ import os
 import socket
 import sys
 
+# pytest-pylint
 try:
     from pytest_pylint import PyLintItem
 except ImportError:

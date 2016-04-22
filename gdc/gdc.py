@@ -2,6 +2,7 @@
 
 """Display download counts of GitHub releases."""
 
+# Python 2 forwards-compatibility
 from __future__ import absolute_import, print_function
 
 # standard imports

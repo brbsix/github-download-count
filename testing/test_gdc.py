@@ -3,6 +3,7 @@
 
 """Tests for gdc.py"""
 
+# Python 2 forwards-compatibility
 from __future__ import absolute_import
 
 # standard imports

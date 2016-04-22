@@ -7,10 +7,16 @@ To build package:
 python3 setup.py sdist bdist_wheel clean
 """
 
+# Python 2 forwards-compatibility
 from __future__ import absolute_import
 
+# standard imports
 import os
+
+# external imports
 from setuptools import setup
+
+# application imports
 from gdc import __description__, __program__, __version__
 
 
