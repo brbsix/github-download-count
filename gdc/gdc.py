@@ -175,7 +175,3 @@ def main(args=None):
     options = _parser(args)
     github = Github()
     github.show(options.user, options.repo, options.tag, options.summarize)
-
-
-if __name__ == '__main__':
-    main()
