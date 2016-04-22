@@ -7,6 +7,8 @@ To build package:
 python3 setup.py sdist bdist_wheel clean
 """
 
+from __future__ import absolute_import
+
 import os
 from setuptools import setup
 from gdc import __description__, __program__, __version__

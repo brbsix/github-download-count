@@ -3,6 +3,8 @@
 
 """Tests for gdc.py"""
 
+from __future__ import absolute_import
+
 # standard imports
 import argparse
 import hashlib

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """pytest setup and teardown configuration."""
 
+from __future__ import absolute_import
+
 # standard imports
 import logging
 import os
