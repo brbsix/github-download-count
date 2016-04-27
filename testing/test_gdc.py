@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=invalid-name,no-init,no-self-use,old-style-class,protected-access,redefined-outer-name,too-few-public-methods
-
 """Tests for gdc.py"""
 
 # Python 2 forwards-compatibility

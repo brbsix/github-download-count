@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 """Display download counts of GitHub releases."""
 
 # Python 2 forwards-compatibility
