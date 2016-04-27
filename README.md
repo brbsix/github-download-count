@@ -1,5 +1,9 @@
 # github-download-count
 
+[![PyPI Package latest release](https://img.shields.io/pypi/v/github-download-count.svg)](https://pypi.python.org/pypi/github-download-count)
+[![License](https://img.shields.io/pypi/l/github-download-count.svg)](https://raw.githubusercontent.com/brbsix/github-download-count/master/LICENSE.md)
+[![PyPI Wheel](https://img.shields.io/pypi/wheel/github-download-count.svg)](https://pypi.python.org/pypi/github-download-count)
+[![Supported versions](https://img.shields.io/pypi/pyversions/github-download-count.svg)](https://pypi.python.org/pypi/github-download-count)
 [![Build Status](https://travis-ci.org/brbsix/github-download-count.svg?branch=master)](https://travis-ci.org/brbsix/github-download-count)
 [![Coverage Status](https://coveralls.io/repos/github/brbsix/github-download-count/badge.svg?branch=master)](https://coveralls.io/github/brbsix/github-download-count?branch=master)
 
